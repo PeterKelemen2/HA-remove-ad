@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  Removes the first child element of the div with the id "center"
 // @author       You
-// @match        *://hardverapro.hu/*
+// @match        *://hardverapro.hu/priv*
 // @grant        none
 // ==/UserScript==
 
