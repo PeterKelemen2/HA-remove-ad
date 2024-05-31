@@ -73,6 +73,7 @@
                     child.style.borderTopLeftRadius = '5px';
                     child.style.borderTopRightRadius = '5px';
                     child.style.marginTop = '5px';
+                    child.style.border = '5px';
                 } else {
                     // Other children
                     child.style.backgroundColor = moreLighterColor;
@@ -93,7 +94,7 @@
     }
 
     const topBannerContainers = Array.from(document.querySelectorAll('div#top > div.container'));
-    //console.log(topBannerContainers);
+    // console.log(topBannerContainers);
 
     const header = topBannerContainers[1];
     header.style.marginTop = '10px';
@@ -144,5 +145,40 @@
             })
         });
     }
+
+    const threadOwner = Array.from(document.querySelectorAll('div.priv-thread-owner, div.priv-thread-owner > h4, div.priv-thread-owner > uad-list, h4.list-message'));
+    console.log(threadOwner)
+
+    if (threadOwner.length > 0) {
+        threadOwner[0].style.marginTop = '5px';
+        threadOwner[2].style.borderRadius = '5px';
+        threadOwner[1].remove();
+        const topPart = Array.from(threadOwner[0].querySelectorAll('*'));
+        console.log(topPart);
+        topPart.forEach(elem => {elem.style.backgroundColor = lighterColor; elem.style.color = 'white'; elem.style.border = '0px'});
+
+        threadOwner.forEach(elem => {elem.style.backgroundColor = lighterColor; elem.style.color = 'white'; elem.style.borderRadius = '5px'});
+
+        const navBars = Array.from(document.querySelectorAll('div.navbar.navbar-default'));
+        console.log(navBars);
+        const buttons = Array.from(document.querySelectorAll('a.btn.btn-forum'));
+        const replyButton = buttons[0];
+        console.log(replyButton);
+
+        const clonedContent = replyButton.cloneNode(true);
+        clonedContent.style.height = '27px';
+        clonedContent.style.backgroundColor = 'white';
+        clonedContent.style.marginRight = '5px';
+        //navBars.forEach(bar => {bar.appendChild(clonedContent)});
+
+        const referenceNode = navBars[0].children[2];
+        navBars[0].insertBefore(clonedContent, referenceNode);
+        //navBars[0].appendChild(clonedContent);
+
+        const toRemove = Array.from(document.querySelectorAll('h4.list-message'));
+        toRemove.forEach(toRem =>{toRem.remove()});
+    }
+
+
 
 })();
